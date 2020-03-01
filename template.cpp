@@ -19,4 +19,6 @@ int main() {
   int ans = 0;
 
   print(ans);
+
+  return 0;
 }
