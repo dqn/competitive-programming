@@ -4,6 +4,7 @@
 #define range(i, begin, end) for (int i = begin; i < end; i++)
 #define rep(i, n) range(i, 0, n)
 #define sortv(x) sort(x.begin(), x.end());
+#define sortvr(x) sort(x.begin(), x.end(), greater<int>());
 #define input(x) cin >> x;
 #define inputn(x, n) x.resize(n); rep(i, n) input(x[i]);
 #define print(x) cout << x << endl;
