@@ -10,15 +10,22 @@ using namespace std;
 using ll = long long;
 
 int n;
+int k;
 vector<int> a;
+
+bool dfs(int depth, int sum) {
+  if (depth == n) return sum == k;
+  if (dfs(depth + 1, sum) || dfs(depth + 1, sum + a[depth])) return true;
+
+  return false;
+}
 
 int main() {
   input(n);
   inputn(a, n);
+  input(k);
 
-  int ans = 0;
-
-  print(ans);
+  print((dfs(0, 0) ? "Yes" : "No"));
 
   return 0;
 }
