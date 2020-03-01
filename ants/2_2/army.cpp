@@ -11,14 +11,28 @@
 using namespace std;
 using ll = long long;
 
-int n;
-vector<int> a;
+int n, r;
+vector<int> x;
 
 int main() {
   input(n);
-  inputn(a, n);
+  input(r);
+  inputn(x, n);
 
+  sortv(x);
+
+  int i = 0;
+  int l = x[i];
   int ans = 0;
+
+  while (i < n) {
+    l += r * 2;
+
+    while (i < n && x[i] < l) i++;
+
+    l = x[i];
+    ans++;
+  }
 
   print(ans);
 

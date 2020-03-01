@@ -3,7 +3,6 @@
 #define INF 100000000
 #define range(i, begin, end) for (int i = begin; i < end; i++)
 #define rep(i, n) range(i, 0, n)
-#define sortv(x) sort(x.begin(), x.end());
 #define input(x) cin >> x;
 #define inputn(x, n) x.resize(n); rep(i, n) input(x[i]);
 #define print(x) cout << x << endl;
@@ -12,15 +11,30 @@ using namespace std;
 using ll = long long;
 
 int n;
-vector<int> a;
+string s, t;
 
 int main() {
   input(n);
-  inputn(a, n);
+  input(s);
 
-  int ans = 0;
+  t = "";
+  int l = 0;
+  int r = n - 1;
 
-  print(ans);
+  while (r >= l) {
+    char lc = s.at(l);
+    char rc = s.at(r);
+
+    if (lc < rc) {
+      t += lc;
+      l++;
+    } else {
+      t += rc;
+      r--;
+    }
+  }
+
+  print(t);
 
   return 0;
 }
