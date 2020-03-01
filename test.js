@@ -33,7 +33,10 @@ function print(str, color) {
 
 function printFailure(failure) {
   console.log(`case ${failure.index + 1}: ${colorize('NG', 'red')}`);
-  console.log(`expect ${colorize(failure.expect, 'green')}, but got ${colorize(failure.actual, 'red')}`);
+  console.log('expect:');
+  console.log(colorize(failure.expect, 'green'));
+  console.log('actual:');
+  console.log(colorize(failure.actual, 'red'));
   console.log();
 }
 
