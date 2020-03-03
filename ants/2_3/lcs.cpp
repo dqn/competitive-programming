@@ -21,5 +21,20 @@ int main() {
   cin.tie(nullptr);
   ios::sync_with_stdio(false);
 
-  
+  input(int, n, m);
+  input(string, s, t);
+
+  vv(int, dp, n + 1, m + 1);
+
+  rep(i, n) {
+    rep(j, m) {
+      if (s[i] == t[j]) {
+        dp[i + 1][j + 1] = dp[i][j] + 1;
+      } else {
+        dp[i + 1][j + 1] = max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+  }
+
+  print(dp[n][m]);
 }
