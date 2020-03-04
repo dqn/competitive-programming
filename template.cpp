@@ -8,10 +8,10 @@ using pii = pair<int, int>;
 
 #define INF 1e18
 #define MOD 1000000007
-#define rep(i, n) for (int i = 0; i < n; i++)
-#define each(x, v) for (auto& x: v)
-#define all(x) x.begin(), x.end()
-#define print(x) cout << x << endl
+#define rep(i, n) for (int i = 0; i < (n); i++)
+#define each(x, v) for (auto& x: (v))
+#define all(x) (x).begin(), (x).end()
+#define print(x) cout << (x) << endl
 
 void solve();
 void in(){} template<class T, class... U> void in(T &t, U &...u){ cin >> t; in(u...); }
