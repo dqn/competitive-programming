@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+const fs = require('fs').promises;
 const cp = require('child_process');
 
 const config = {
@@ -42,7 +42,11 @@ function printFailure(failure) {
 
 function compile(bin, sourcePath, options = []) {
   const command = `${bin} ${options.join(' ')} ${sourcePath}`;
-  cp.execSync(command).toString();
+  const msg = cp.execSync(command).toString();
+
+  if (msg) {
+    console.log(msg);
+  }
 }
 
 function parseTest(test) {
@@ -58,9 +62,9 @@ function parseTest(test) {
   return tests;
 }
 
-function getTestsOf(sourcePath, testExtension) {
+async function getTestsOf(sourcePath, testExtension) {
   const testPath = sourcePath.replace(/\.\w+/, testExtension);
-  const test = fs.readFileSync(testPath).toString();
+  const test = (await fs.readFile(testPath)).toString();
 
   return parseTest(test);
 }
@@ -95,7 +99,7 @@ async function main(argv) {
 
   compile(config.bin, sourcePath, config.options);
 
-  const tests = getTestsOf(sourcePath, config.testExtension);
+  const tests = await getTestsOf(sourcePath, config.testExtension);
   const failures = await execTestsAsync(tests);
 
   config.after && cp.exec(config.after);

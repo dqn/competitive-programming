@@ -6,7 +6,7 @@ using vi = vector<int>;
 using vvi = vector<vector<int>>;
 using pii = pair<int, int>;
 
-#define INF 1e18
+#define INF 1e9
 #define MOD 1000000007
 #define rep(i, n) for (int i = 0; i < (n); i++)
 #define each(x, v) for (auto& x: (v))
