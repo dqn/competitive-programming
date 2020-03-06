@@ -8,7 +8,7 @@ using pii = pair<int, int>;
 
 #define INF 1e9
 #define MOD 1000000007
-#define rep(i, n) for (int i = 0; i < (n); i++)
+#define rep(i, a, b) for (int i = (a); i < (b); i++)
 #define each(x, v) for (auto& x: (v))
 #define all(x) (x).begin(), (x).end()
 #define print(x) cout << (x) << endl
@@ -18,18 +18,18 @@ void in(){} template<class T, class... U> void in(T &t, U &...u){ cin >> t; in(u
 int main() { cin.tie(0); ios::sync_with_stdio(0); solve(); }
 
 void solve() {
-  int N;
-  cin >> N;
-  map<string, int> mp;
-  int mx = 0;
-  rep(i, N) {
-    string s;
-    cin >> s;
-    mx = max(mx, ++mp[s]);
-  }
+  int N, K;
+  in(N, K);
+  vector<int> s(N + 1);
 
-  each(x, mp) {
-    if (x.second != mx) continue;
-    print(x.first);
+  rep(i, 1, N + 1) {
+    int pi;
+    in(pi);
+    s[i] = s[i - 1] + pi;
   }
+  int mx = 0;
+  rep(i, K, N + 1) {
+    mx = max(mx, s[i] - s[i - K]);
+  }
+  printf("%.12f\n", (mx + K) * 1.0 / 2);
 }

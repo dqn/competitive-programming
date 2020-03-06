@@ -19,17 +19,18 @@ int main() { cin.tie(0); ios::sync_with_stdio(0); solve(); }
 
 void solve() {
   int N;
-  cin >> N;
-  map<string, int> mp;
-  int mx = 0;
+  in(N);
+  set<int> s;
+  bool ans = true;
   rep(i, N) {
-    string s;
-    cin >> s;
-    mx = max(mx, ++mp[s]);
+    int a;
+    in(a);
+    if (s.find(a) != s.end()) {
+      ans = false;
+    } else {
+      s.insert(a);
+    }
   }
 
-  each(x, mp) {
-    if (x.second != mx) continue;
-    print(x.first);
-  }
+  print(ans ? "YES" : "NO");
 }
