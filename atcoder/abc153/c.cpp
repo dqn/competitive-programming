@@ -8,7 +8,7 @@ using pii = pair<int, int>;
 
 #define INF 1e9
 #define MOD 1000000007
-#define rep(i, a, b) for (int i = (a); i < (b); i++)
+#define rep(i, n) for (int i = 0; i < (n); i++)
 #define each(x, v) for (auto& x: (v))
 #define all(x) (x).begin(), (x).end()
 #define print(x) cout << (x) << endl
@@ -20,16 +20,23 @@ int main() { cin.tie(0); ios::sync_with_stdio(0); solve(); }
 void solve() {
   int N, K;
   in(N, K);
-  vector<int> s(N);
-
-  rep(i, 0, N) {
-    int pi;
-    in(pi);
-    s[i] = (i == 0 ? 0 : s[i - 1]) + pi;
+  if (N <= K) {
+    print(0);
+    return;
   }
-  int mx = 0;
-  rep(i, K - 1, N) {
-    mx = max(mx, s[i] - s[i - K]);
+  priority_queue<ll> H;
+  rep(i, N) {
+    ll hi;
+    in(hi);
+    H.push(hi);
   }
-  printf("%.12f\n", (mx + K) / 2.0);
+  rep(i, K) {
+    H.pop();
+  }
+  ll ans = 0;
+  while (!H.empty()) {
+    ans += H.top();
+    H.pop();
+  }
+  print(ans);
 }
