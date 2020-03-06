@@ -46,7 +46,7 @@ function makeTestContent(tests) {
     contens.push(test.input + '\n' + test.output);
   }
 
-  return contens.join('---\n');
+  return contens.join('---\n').replace(/\r\n/g, '\n');
 }
 
 function makeDirName(url) {
