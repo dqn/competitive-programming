@@ -8,14 +8,14 @@ $ ./a.out
 # rm a.out
 ```
 
-# Test
+## Test
 
 ```bash
 # Need `*.cpp` and `*.txt` in same directory
 $ node test.js <path>
 ```
 
-# Initialize for AtCoder
+## Initialize for AtCoder
 
 ```bash
 # Need `./template.cpp`
