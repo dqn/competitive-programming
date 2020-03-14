@@ -19,5 +19,21 @@ void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(int, N, M);
+  vector<bool> m(N + 1, true);
+  rep(i, 0, M) {
+    VAR(int, ai);
+    m[ai] = false;
+  }
+  vector<ll> dp(N + 1);
+  dp[0] = 1;
+  dp[1] = 1;
+  rep(i, 2, N + 1) {
+    rep(j, i - 2, i) {
+      if (m[j]) {
+        dp[i] = (dp[i] + dp[j]) % MOD;
+      }
+    }
+  }
+  print(dp[N]);
 }
