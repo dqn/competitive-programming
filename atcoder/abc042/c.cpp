@@ -13,11 +13,24 @@ const int MOD=1000000007;
 #define rrep(i,a,b) for(ll i=(a-1);i>=(b);--i)
 #define each(x,v) for(auto &x:(v))
 #define all(x) (x).begin(),(x).end()
-#define print(x) cout<<(x)<<endl
+#define print(x) cout<<(x)<< endl
 void in(){} template<class T,class... U> void in(T &t,U &...u){cin>>t;in(u...);}
 void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(int, N, K);
+  VEC(char, D, K);
+  rep(i, N, INF) {
+    bool f = true;
+    each(x, to_string(i)) {
+      each(y, D) {
+        if (x == y) f = false;
+      }
+    }
+    if (f) {
+      print(i);
+      return;
+    }
+  }
 }
