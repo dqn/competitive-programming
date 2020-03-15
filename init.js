@@ -23,7 +23,7 @@ function get(url) {
   });
 }
 
-function parse(html) {
+function parseTest(html) {
   const matches = html.match(/<h3>.力例 \d<\/h3><pre>(.+?)<\/pre>/gs);
   const tests = [];
   const parseContent = (content) => {
@@ -36,7 +36,20 @@ function parse(html) {
     tests.push({ input, output });
   }
 
-  return tests;
+  return { tests };
+}
+
+function parseContestInfo(html) {
+  const contest = html.match(/contests\/([\w\d]+)\//)[1];
+  const probrem = html.match(/<title>([ABCDEF]) -/)[1].toLowerCase();
+  return { dir: `./atcoder/${contest}`, file: probrem };
+}
+
+function parse(html) {
+  return {
+    ...parseTest(html),
+    ...parseContestInfo(html),
+  };
 }
 
 function makeTestContent(tests) {
@@ -47,13 +60,6 @@ function makeTestContent(tests) {
   }
 
   return contens.join('---\n').replace(/\r\n/g, '\n');
-}
-
-function makeDirName(url) {
-  const splitted = url.split('/');
-  const [ contest, probrem ] = splitted[splitted.length - 1].split('_');
-
-  return { dir: `./atcoder/${contest}`, file: probrem };
 }
 
 async function createTestFile(path, tests) {
@@ -73,8 +79,7 @@ async function main(argv) {
   }
 
   const response = await get(url);
-  const tests = parse(response);
-  const { dir, file } = makeDirName(url);
+  const { dir, file, tests } = parse(response);
 
   await fs.mkdir(dir, { recursive: true });
   await Promise.all([
