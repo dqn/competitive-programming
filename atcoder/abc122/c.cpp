@@ -19,5 +19,16 @@ void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(int, N, Q);
+  VAR(string, S);
+  vector<pii> p(Q);
+  each(x, p) in(x.first, x.second);
+  vi a(N);
+  rep(i, 1, N) {
+    a[i] = a[i - 1];
+    if (S[i - 1] == 'A' && S[i] == 'C') a[i]++;
+  }
+  rep(i, 0, Q) {
+    print(a[p[i].second - 1] - a[p[i].first - 1]);
+  }
 }
