@@ -10,7 +10,7 @@ const int MOD=1000000007;
 #define VAR(type,...) type __VA_ARGS__;in(__VA_ARGS__)
 #define VEC(type,name,size) vector<type> name(size);each(x, name)in(x)
 #define rep(i,a,b) for(int i=(a);i<(b);++i)
-#define rrep(i,a,b) for(int i=(a-1);i>=(b);--i)
+#define rrep(i,a,b) for(ll i=(a-1);i>=(b);--i)
 #define each(x,v) for(auto &x:(v))
 #define all(x) (x).begin(),(x).end()
 #define print(x) cout<<(x)<<endl
@@ -19,5 +19,17 @@ void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(int, N);
+  VEC(int, a, N);
+  int mn = *min_element(all(a));
+  int mx = *max_element(all(a));
+  int ans = INF;
+  rep(i, mn, mx + 1) {
+    int cc = 0;
+    each(x, a) {
+      cc += (x - i) * (x - i);
+    }
+    ans = min(ans, cc);
+  }
+  print(ans);
 }
