@@ -46,6 +46,8 @@ function compile(bin, sourcePath, options = []) {
 
   if (msg) {
     console.log(msg);
+  } else {
+    console.log("compiled!");
   }
 }
 
