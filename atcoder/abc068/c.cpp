@@ -30,16 +30,16 @@ void solve() {
   priority_queue<pii, vector<pii>, greater<>> que;
   vi d(N, INF);
   d[0] = 0;
-  que.push(pii(0, 0)); // index、cost
+  que.push(pii(0, 0)); // cost, index
 
   while (!que.empty()) {
     pii p = que.top(); que.pop();
-    int i = p.first;
-    if (d[i] < p.second) continue;
+    int i = p.second;
+    if (d[i] < p.first) continue;
     each(x, g[i]) {
       if (d[x] > d[i] + 1) {
         d[x] = d[i] + 1;
-        que.push(pii(x, d[x]));
+        que.push(pii(d[x], x));
       }
     }
   }
