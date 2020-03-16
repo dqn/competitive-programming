@@ -1,4 +1,1 @@
-int gcd(int a, int b) {
-  while(a^=b^=a^=b%=a);
-  return b;
-}
+int gcd(int a,int b){while(a^=b^=a^=b%=a);return b;}
