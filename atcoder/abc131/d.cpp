@@ -3,10 +3,7 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 using vvi=vector<vi>;
-using vl=vector<ll>;
-using vvl=vector<vl>;
 using pii=pair<int,int>;
-using pll=pair<ll,ll>;
 const ll LINF=0x1fffffffffffffff;
 const int INF=0x3fffffff;
 const int MOD=1000000007;
@@ -22,5 +19,19 @@ void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(ll, N);
+  vector<pair<ll, ll>> p(N);
+  rep(i, 0, N) {
+    in(p[i].second, p[i].first);
+  }
+  sort(all(p));
+  ll t = 0;
+  rep(i, 0, N) {
+    t += p[i].second;
+    if (t > p[i].first) {
+      print("No");
+      return;
+    }
+  }
+  print("Yes");
 }
