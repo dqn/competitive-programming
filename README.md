@@ -22,3 +22,9 @@ $ node test.js <path>
 $ node init.js <url>
 # => ./atcoder/abcXXX/x.cpp, ./atcoder/abcXXX/x.txt
 ```
+
+### Bookmarklet for copy test cases
+
+```js
+javascript:(()=>{const e=document.createElement('textarea');e.value=Array.from(document.querySelector('.lang-ja').querySelectorAll('[id^=pre-sample]')).reduce((a,it,i)=>{(i%2)?a[a.length-1]+='\n'+it.textContent:a.push(it.textContent);return a;},[]).join('---\n');document.body.appendChild(e);e.select();e.focus();document.execCommand('copy');document.body.removeChild(e);alert('copied!');})();void 0;
+```
