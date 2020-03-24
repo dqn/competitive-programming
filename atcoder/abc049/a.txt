@@ -1,0 +1,11 @@
+a
+
+vowel
+---
+z
+
+consonant
+---
+s
+
+consonant
