@@ -1,0 +1,7 @@
+needed
+
+2 5
+---
+atcoder
+
+-1 -1

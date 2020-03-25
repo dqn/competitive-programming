@@ -23,5 +23,20 @@ void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(string, s);
+  rep(i, 0, (int)s.length() - 1) {
+    if (s[i] == s[i + 1]) {
+      i++;
+      print(i, i + 1);
+      return;
+    }
+  }
+  rep(i, 0, (int)s.length() - 2) {
+    if (s[i] == s[i + 2]) {
+      i++;
+      print(i, i + 2);
+      return;
+    }
+  }
+  print("-1 -1");
 }
