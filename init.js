@@ -24,10 +24,10 @@ function get(url) {
 }
 
 function parseTest(html) {
-  const matches = html.match(/<h3>.力例 \d<\/h3><pre>(.+?)<\/pre>/gs);
+  const matches = html.match(/<h3>.{0,4}力例.{0,4}<\/h3>.{0,4}<pre>(.+?)<\/pre>/gms);
   const tests = [];
   const parseContent = (content) => {
-    return content.match(/pre>(.+?)<\/pre/s)[1];
+    return content.match(/pre>(.+?)<\/pre/s)[1].trim();
   };
 
   for (let i = 0; i < matches.length; i += 2) {
@@ -56,7 +56,7 @@ function makeTestContent(tests) {
   const contens = [];
 
   for (const test of tests) {
-    contens.push(test.input + '\n' + test.output);
+    contens.push(test.input + '\n\n' + test.output + '\n');
   }
 
   return contens.join('---\n').replace(/\r\n/g, '\n');
