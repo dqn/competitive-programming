@@ -29,7 +29,7 @@ void solve() {
     VAR(ll, Ai);
     odd += Ai % 2;
   }
-  if (odd % 2 || (odd / 2 + (N - odd)) % 2) {
+  if (odd % 2) {
     print("NO");
   } else {
     print("YES");
