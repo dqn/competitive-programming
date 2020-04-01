@@ -24,5 +24,8 @@ void solve();
 int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 
 void solve() {
-  
+  VAR(int, A, B, C, D);
+  int x = A + B;
+  int y = C + D;
+  print(x == y ? "Balanced" : x > y ? "Left" : "Right");
 }
