@@ -1,0 +1,11 @@
+ant
+obe
+rec
+
+abc
+---
+edu
+cat
+ion
+
+ean
