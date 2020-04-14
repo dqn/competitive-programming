@@ -26,10 +26,10 @@ int main(){cin.tie(0);ios::sync_with_stdio(0);solve();}
 void solve() {
   VAR(int, A, B, C, X);
   int ans = 0;
-  rep(i, 0, i <= A) {
-    rep(j, 0, j <= B) {
-      int sum = i * 500 + j * 100;
-      if (sum <= X && (X - sum) % 50 == 0) {
+  rep(i, 0, A + 1) {
+    rep(j, 0, B + 1) {
+      int d = X - i * 500 - j * 100;
+      if (d >= 0 && d % 50 == 0 && C >= d / 50) {
         ans++;
       }
     }
