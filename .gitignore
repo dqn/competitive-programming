@@ -1,2 +1,3 @@
-.vscode/
-paiza/
+/.vscode/
+/paiza/
+/atcoderrc.yml
